@@ -1,4 +1,4 @@
-@extends('layouts\app');
+@extends('layouts.app-mech')
 
 @section('content')
 
@@ -9,7 +9,7 @@
                   <div class="card-header">Pending Requests</div>
 
                   <div class="card-body">
-                    <?php if (!empty($pending)): ?>
+                    <?php if (!is_null($pending)): ?>
 
 
                       @foreach($pending as $record)

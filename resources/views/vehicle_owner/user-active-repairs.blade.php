@@ -1,4 +1,4 @@
-@extends('layouts\app');
+@extends('layouts.app')
 
 @section('content')
 
@@ -6,7 +6,7 @@
       <div class="row justify-content-center">
           <div class="col-md-8">
               <div class="card">
-                  <div class="card-header"> Mechanic Ongoing Repairs</div>
+                  <div class="card-header"> User Ongoing Repairs</div>
 
                   <div class="card-body">
                     <?php if (!empty($history)): ?>
@@ -31,13 +31,13 @@
                                 </tr>
 
                           </table>
-                      
+
                           </div>
 
                       @endforeach
                     <?php else: ?>
                       <div class="">
-                        <p>You have no active repairs. Your active repairs will appear here.</p>
+                        <p>You have no active repairs. Your ongoing repairs will appear here</p>
                       </div>
 
                     <?php endif; ?>

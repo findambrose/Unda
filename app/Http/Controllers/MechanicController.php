@@ -16,7 +16,7 @@ class MechanicController extends Controller
 
       $profileInfo = User::find($id);
 
-      return view('mechanicprofile', ['profileInfo' => $profileInfo ]);
+      return view('mechanic/mechanicprofile', ['profileInfo' => $profileInfo ]);
 
 
     }
@@ -24,7 +24,7 @@ class MechanicController extends Controller
 
       $id = Auth::user()->id;
 
-      return view('mechanicdashboard' , ['id' => $id]);
+      return view('mechanic/mechanicdashboard' , ['id' => $id]);
 
     }
 
@@ -34,7 +34,7 @@ class MechanicController extends Controller
     $history = Repair::where('mechanic_id', $id) ->where('completion_status', 'complete')->get();
 
 
-      return view('mech-repair-history', ['history' => $history]);
+      return view('mechanic/mech-repair-history', ['history' => $history]);
     }
 
     function getMechanicActiveRepairs($id)
@@ -43,7 +43,7 @@ class MechanicController extends Controller
     $history = Repair::where('mechanic_id', $id) ->where('acceptance_status', 'accepted') ->where('completion_status', 'ongoing')->get();
 
 
-      return view('mechanic-active-repairs', ['history' => $history]);
+      return view('mechanic/mechanic-active-repairs', ['history' => $history]);
     }
 
 }

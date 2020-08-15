@@ -1,4 +1,4 @@
-@extends('layouts\app');
+@extends('layouts.app');
 
 @section('content')
 
@@ -8,7 +8,7 @@
   </div>
 
   <div class="card-body">
-    @if(!empty($searchResult))
+    @if(!empty($searchResults))
 
         @foreach($searchResults as $searchResult)
 
@@ -26,10 +26,10 @@
         </div>
         @endforeach
 
-      @else
+    @else
         <p>We are sorry we couldn't locate any mechanics around you. Please check our expert system for help.</p>
         <button class="btn btn-primary" type="" onclick="window.location='/'" name="" >Change location</button>
-      @endif
+    @endif
   </div>
 </div>
 <div class="search-results">

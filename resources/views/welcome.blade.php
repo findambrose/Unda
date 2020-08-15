@@ -2,7 +2,7 @@
   @section('content')
         <div class="how-it-works">
             <h1 class="how-it-works-text">How It Works</h1>
-            <img style="width: 100%" src="/imgs/how-it-works.jpg" alt="">
+            <img style="width: 95%" src="/imgs/how-it-works.jpg" alt="">
         </div>
 
         <div style="background-color: #57B8FF" class="row justify-content-center">
