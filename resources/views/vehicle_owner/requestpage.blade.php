@@ -1,4 +1,4 @@
-@extends('layouts\app');
+@extends('layouts.app');
 
 @section('content')
 
@@ -51,9 +51,19 @@
 
                 <div class="form-group row mb-0">
                     <div class="col-md-6 offset-md-4">
+                      @auth
                         <button type="submit" style=" border-color: #95C623;background-color: #95C623
-" class="btn btn-primary">
-                            Send Request
+                        "class="btn btn-primary">
+
+                          Send Request
+
+                        </button>
+                        @else
+                        <button type="" onclick="window.location = {{url('/login')}}" style=" border-color: #95C623;background-color: #95C623
+                        "class="btn btn-primary">
+
+                          Login to send request
+
                         </button>
                     </div>
                 </div>

@@ -44,13 +44,13 @@ class RepairController extends Controller
 
     }
 
-function getPendingRepairs()
+function getPendingRepairs()  //TODO: Move this method to MechanicsController
 {
   // code...
 
   $id = auth()->user()->id;
   $pending = Repair::where('mechanic_id', $id) ->where('acceptance_status', 'pending')->get();
-  return view('mech-pending-requests', ['pending' => $pending]);
+  return view('/mechanic/mech-pending-requests', ['pending' => $pending]);
 }
 
 function acceptRepairRequest($id)
@@ -67,7 +67,7 @@ function acceptRepairRequest($id)
 
   $repair->where($id)->acceptance_status = $acceptance_status;
   $repair->where($id)->completion_status = $completion_status;
-  $repair->save();
+  $repair->update();
 
 
 }

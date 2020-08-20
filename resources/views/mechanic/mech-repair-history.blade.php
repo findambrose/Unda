@@ -1,4 +1,4 @@
-@extends('layouts\app');
+@extends('layouts\app-mech')
 
 @section('content')
 
@@ -9,7 +9,7 @@
                   <div class="card-header">Repair History</div>
 
                   <div class="card-body">
-                    <?php if (!empty($history)): ?>
+                    <?php if (!is_null($history)): ?>
 
                       @foreach($history as $record)
                           <div class="">

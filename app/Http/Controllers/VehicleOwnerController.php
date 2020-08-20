@@ -12,7 +12,7 @@ class VehicleOwnerController extends Controller
     function getVehicleOwnerProfile($id){
       $voprofile = User::findOrFail($id);
 
-      return view('vehicleownerprofile', ['voprofile' => $voprofile]);
+      return view('vehicle_owner/vehicleownerprofile', ['voprofile' => $voprofile]);
     }
 
     function searchMechanic()
@@ -27,7 +27,7 @@ class VehicleOwnerController extends Controller
 
       $location = $_GET['location'];
       $searchResults = User::where('location', $location) ->where('role', 'mechanic')->get();
-      return view('search_results', ['searchResults' => $searchResults]);
+      return view('vehicle_owner/search_results', ['searchResults' => $searchResults]);
 
 
 
@@ -36,7 +36,7 @@ class VehicleOwnerController extends Controller
   public function requestMechanic($id)
     {
       // code...
-      return view('requestpage', ['mechId' => $id]);
+      return view('vehicle_owner/requestpage', ['mechId' => $id]);
 
 
     }
@@ -47,7 +47,7 @@ class VehicleOwnerController extends Controller
     $history = Repair::where('vehicle_owner_id', $id) ->where('completion_status', 'complete')->get();
 
 
-      return view('user-repair-history', ['history' => $history]);
+      return view('vehicle_owner/user-repair-history', ['history' => $history]);
     }
 
     function getUserActiveRepairs($id)
@@ -56,21 +56,21 @@ class VehicleOwnerController extends Controller
     $history = Repair::where('vehicle_owner_id', $id) ->where('acceptance_status', 'accepted') ->where('completion_status', 'ongoing')->get();
 
 
-      return view('user-active-repairs', ['history' => $history]);
+      return view('vehicle_owner/user-active-repairs', ['history' => $history]);
     }
 
     function getUserDashboard()
     {
 
       $id = auth()->user()->id;
-      return view('user-dashboard', ['id' =>$id]);
+      return view('vehicle_owner/user-dashboard', ['id' =>$id]);
     }
 
     function getuserPendingRepairs($id)
     {
       // code...
       $pending = Repair::where('vehicle_owner_id', $id) ->where('acceptance_status', 'pending')->get();
-      return view('mech-pending-requests', ['pending' => $pending]);
+      return view('vehicle_owner/user-pending-requests', ['pending' => $pending]);
     }
 
 
