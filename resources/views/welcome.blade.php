@@ -21,27 +21,33 @@
 
                                   <div class="form-group row">
                                       <label style="font-size: 20px; margin-left: 15px; font-weight: bold" for="location">Choose location: &nbsp;</label>
-                                      <div class="col-md-10">
+                                      <div class="col-md-5">
 
-                                        <select class="" name="location">
-                                          <option value="select-area">Choose your area</option>
+                                        <select class="county" name="location">
+                                          <option value="select-area">Choose your County</option>
                                           <option value="nairobi">Nairobi</option>
                                           <option value="mombasa">Mombasa</option>
                                           <option value="kisumu">Kisumu</option>
-                                          <option value="nakuru">Nakuru</option>
-                                          <option value="eldoret">Eldoret</option>
-                                          <option value="kitui">Kitui</option>
-                                          <option value="malindi">Malindi</option>
-                                          <option value="kisii">Kisii</option>
-                                          <option value="embu">Embu</option>
+                                         
                                         </select>
                                           &nbsp;&nbsp;
                                   </div>
+
+                                  <div class="col-md-2">
+
+                                    <select style="display: none" class="town" name="location">
+                                      <option disabled value="select-area">Choose your area</option>
+                                      <option value="tobe populated">tobe populated</option>
+                                      
+                                    </select>
+                                      &nbsp;&nbsp;
+                              </div>
                                   </div>
 
 
                                 <button  style="  border-color: #95C623; background-color: #95C623"class="btn btn-primary"  type="submit" name="button">Search</button>
-                                </form>
+                                   
+                              </form>
                               </div>
 
                               <div class="success-message">
@@ -56,6 +62,45 @@
                 </div>
             </div>
         </div>
+        <script>
+                                               
 
+         
+          $(function () {
+            //jQuery code
+            var nairobi = ["Madaraka", "Nairobi West", "Kibera", "Westlands"];
+            var kisumu = ["Bondo", "Nyakach", "Nyando", "Kisumu West"];
+            var mombasa = ["Nyali", "Ukunda", "Bamburi", "Mtwapa"];
+
+            
+
+            $(".county").on("change", function () {
+              var selectedCounty = $(".county").val();
+              
+              
+              $(".town").css({"display": "block"});
+            }); 
+              if (selectedCounty == "nairobi") {
+                //Populate towns with nairobi list
+                //Loop over nairobi list
+                for (var town of nairobi) {
+                   $(".town").html(
+                     "<option> $town </option>"
+                   );
+                }
+
+              }
+              if (selectedCounty == "kisumu") {
+                //Populate towns with nairobi list
+                
+              }
+              if (selectedCounty == "mombasa") {
+                //Populate towns with nairobi list
+                
+              }
+
+
+          });
+        </script>
 
   @endsection('content')
