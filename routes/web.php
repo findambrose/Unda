@@ -13,15 +13,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+
+Auth::routes();
+
 Route::get('/', function () {
 
 
     // $id = auth()->user()->id;
     return view('welcome');
 });
-
-Auth::routes();
-
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/mechanic/profile/{id}', 'MechanicController@getProfile')->name('mechProfile');
 Route::get('/user/dashboard', 'VehicleOwnerController@getUserDashboard')->name('userDashboard');
