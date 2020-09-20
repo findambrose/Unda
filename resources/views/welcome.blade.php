@@ -18,44 +18,73 @@
                               <div class="">
                                 <form class="searchform" action="/mechanic/search" method="get">
                                   @csrf
-
                                   <div class="form-group row">
-                                      <label style="font-size: 20px; margin-left: 15px; font-weight: bold" for="location">Choose location: &nbsp;</label>
-                                      <div class="col-md-10">
-
-                                        <select class="" name="location">
-                                          <option value="select-area">Choose your area</option>
-                                          <option value="nairobi">Nairobi</option>
-                                          <option value="mombasa">Mombasa</option>
-                                          <option value="kisumu">Kisumu</option>
-                                          <option value="nakuru">Nakuru</option>
-                                          <option value="eldoret">Eldoret</option>
-                                          <option value="kitui">Kitui</option>
-                                          <option value="malindi">Malindi</option>
-                                          <option value="kisii">Kisii</option>
-                                          <option value="embu">Embu</option>
-                                        </select>
-                                          &nbsp;&nbsp;
-                                  </div>
-                                  </div>
+                                    <label style="font-size: 20px; margin-left: 15px; font-weight: bold" for="location">Choose location: &nbsp;</label>
+                                    <div class="col-md-10">
+                                  <script type="text/javascript">
 
 
-                                <button  style="  border-color: #95C623; background-color: #95C623"class="btn btn-primary"  type="submit" name="button">Search</button>
-                                </form>
-                              </div>
+                                    function configureDropDownLists(county,city) {
+                                            var Nairobi = new Array('', 'Madaraka', 'South-b');
+                                            var Mombasa = new Array('', 'Mtwapa', 'Bamburi');
+                                    
+                                        switch (county.value) {
+                                                     case 'Nairobi':
+                                                           document.getElementById(city).options.length = 0;
+                                                           for (i = 0; i < Nairobi.length; i++) {
+                                                           createOption(document.getElementById(city), Nairobi[i], Nairobi[i]);
+                                                    }
+                                                    break;
+                                                case 'Mombasa':
+                                                    document.getElementById(city).options.length = 0; 
+                                                for (i = 0; i < Mombasa.length; i++) {
+                                                    createOption(document.getElementById(city), Mombasa[i], Mombasa[i]);
+                                                    }
+                                                    break;
+                                          }
+                                    
+                                        }
+                                    
+                                     function createOption(county, text, value) {
+                                            var opt = document.createElement('option');
+                                            opt.value = value;
+                                            opt.text = text;
+                                            county.options.add(opt);
+                                        }
+                                    </script>
+                                    <tr>
+                                    <td>County Name: </td>
+                                    <td><select id="county" onchange="configureDropDownLists(this,'city');">
+                                    <option value=""></option>
+                                    <option value="Nairobi">Nairobi</option>
+                                    <option value="Mombasa">Mombasa</option>
+                                    </select></td>
+                                    </tr><br>
+                                    <tr>
+                                    <td>City: </td>
+                                    <td><select id="city">
+                                    </select></td>
+                                    </tr>
+                                </div>
+                            </div>
 
-                              <div class="success-message">
-                                  <p>{{session('thanks')}}</p>
 
-                              </div>
+                          <button  style="  border-color: #95C623; background-color: #95C623"class="btn btn-primary"  type="submit" name="button">Search</button>
+                          </form>
+                        </div>
 
-                          </div>
-                      </div>
-                      <!-- <a href="/mechanic/profile/{$id}">View Profile</a> -->
+                        <div class="success-message">
+                            <p>{{session('thanks')}}</p>
+
+                        </div>
+
                     </div>
                 </div>
-            </div>
-        </div>
-
+                <!-- <a href="/mechanic/profile/{$id}">View Profile</a> -->
+              </div>
+          </div>
+      </div>
+  </div>
+                                  
 
   @endsection('content')
