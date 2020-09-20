@@ -10943,6 +10943,10 @@ html, body {
     font-weight: 200;
     height: 100vh;
     margin: 0;
+    overflow-x: hidden;
+    max-width: 100%;
+	
+	
 }
 .success-message{
   margin-top: 10px;
