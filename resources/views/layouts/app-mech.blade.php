@@ -51,9 +51,6 @@
                         <li style="margin-right: 5px;">|</li>
                         <li> <a href="#" style="margin-right: 5px;">Support</a> </li>
 
-
-
-
                     </ul>
 
                     <ul style="margin-left: 15px" class="navbar-nav mr-auto">
@@ -75,12 +72,14 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="#">Profile</a>
+                                    <a class="dropdown-item" href="#">My Account</a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
-                                    <a class="dropdown-item" href="#">My Account</a>
+
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf

@@ -45,8 +45,6 @@
                         <li style="margin-right: 5px;">|</li>
                         <li> <a style="margin-right: 5px;" href="#">Repairs</a> </li>
                         <li style="margin-right: 5px;">|</li>
-                        <li> <a href="#" style="margin-right: 5px;">Transactions</a> </li>
-                        <li style="margin-right: 5px;">|</li>
 
                         <li> <a href="#">Contact us</a> </li>
 
@@ -73,12 +71,14 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="#">Profile</a>
+                                    <a class="dropdown-item" href="#">My Account</a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
-                                    <a class="dropdown-item" href="#" aria-labelledby = "navbarDropdown">My Account</a>
+
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf
