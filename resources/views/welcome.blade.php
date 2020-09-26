@@ -17,8 +17,8 @@
                               <div class="">
                                 <form class="searchform" action="/mechanic/search" method="get">
                                   @csrf
-
                                   <div class="form-group row">
+
                                       <label style="font-size: 20px; margin-left: 15px; font-weight: bold" for="location">Choose location: &nbsp;</label>
                                       <div class="col-md-5">
 
@@ -119,6 +119,7 @@
 
          });
        </script>
+
 
 
   @endsection('content')
