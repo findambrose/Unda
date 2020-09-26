@@ -42,7 +42,7 @@ class LoginController extends Controller
                      return route('mechDashboard');
                  break;
              case 'vehicle_owner':
-                     return 'home';
+                     return '/';
                  break;
              default:
                      return '/login';

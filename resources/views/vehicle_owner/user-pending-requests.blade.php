@@ -9,8 +9,8 @@
                   <div class="card-header">Pending Requests</div>
 
                   <div class="card-body">
-                    <?php if (!empty($pending)): ?>
-                      @foreach($pending as $record)
+                    <?php if (!empty($pending[0])): ?>
+                       @foreach($pending as $record)
                           <div class="">
                           Repair Number:  {{$record->id}}
                           Vehicle Owner Name (Join Record): Join for Vehicle Owner Name
@@ -18,7 +18,16 @@
                           Address Desc:  {{$record->address_desc}}
 
                           </div>
-                          <button onclick="window.location='{{route('cancelRequest', $record->id)}}'" type="button" name="button">Cancel Request</button>
+                          <form class="" action="{{route('cancelRequest', $record->id)}}" method="post">
+                            @csrf
+
+                            <input type="hidden" name="acceptance_status" value="cancelled">
+
+
+
+                          <button  style="margin-top: 10px" type="submit" class="btn btn-primary" name="button">Cancel Request</button>
+
+                          </form>
 
 
                       @endforeach

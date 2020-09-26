@@ -4,7 +4,6 @@
             <h1 class="how-it-works-text">How It Works</h1>
             <img style="width: 95%" src="/imgs/how-it-works.jpg" alt="">
         </div>
-
         <div style="background-color: #57B8FF" class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
@@ -19,72 +18,108 @@
                                 <form class="searchform" action="/mechanic/search" method="get">
                                   @csrf
                                   <div class="form-group row">
-                                    <label style="font-size: 20px; margin-left: 15px; font-weight: bold" for="location">Choose location: &nbsp;</label>
-                                    <div class="col-md-10">
-                                  <script type="text/javascript">
+
+                                      <label style="font-size: 20px; margin-left: 15px; font-weight: bold" for="location">Choose location: &nbsp;</label>
+                                      <div class="col-md-5">
+
+                                        <select class="county" name="county">
+                                          <option value="select-area">Choose your area</option>
+                                          <option value="nairobi">Nairobi</option>
+                                          <option value="mombasa">Mombasa</option>
+                                          <option value="kisumu">Kisumu</option>
+                                        </select>
+                                          &nbsp;&nbsp;
+                                      </div>
+
+                                      <div class="col-md-2">
+
+                                      <select style="display: none" class="town" name="town">
+                                      <option disabled value="select-area">Choose your area</option>
 
 
-                                    function configureDropDownLists(county,city) {
-                                            var Nairobi = new Array('', 'Madaraka', 'South-b');
-                                            var Mombasa = new Array('', 'Mtwapa', 'Bamburi');
-                                    
-                                        switch (county.value) {
-                                                     case 'Nairobi':
-                                                           document.getElementById(city).options.length = 0;
-                                                           for (i = 0; i < Nairobi.length; i++) {
-                                                           createOption(document.getElementById(city), Nairobi[i], Nairobi[i]);
-                                                    }
-                                                    break;
-                                                case 'Mombasa':
-                                                    document.getElementById(city).options.length = 0; 
-                                                for (i = 0; i < Mombasa.length; i++) {
-                                                    createOption(document.getElementById(city), Mombasa[i], Mombasa[i]);
-                                                    }
-                                                    break;
-                                          }
-                                    
-                                        }
-                                    
-                                     function createOption(county, text, value) {
-                                            var opt = document.createElement('option');
-                                            opt.value = value;
-                                            opt.text = text;
-                                            county.options.add(opt);
-                                        }
-                                    </script>
-                                    <tr>
-                                    <td>County Name: </td>
-                                    <td><select id="county" onchange="configureDropDownLists(this,'city');">
-                                    <option value=""></option>
-                                    <option value="Nairobi">Nairobi</option>
-                                    <option value="Mombasa">Mombasa</option>
-                                    </select></td>
-                                    </tr><br>
-                                    <tr>
-                                    <td>City: </td>
-                                    <td><select id="city">
-                                    </select></td>
-                                    </tr>
-                                </div>
-                            </div>
+                                    </select>
+                                      &nbsp;&nbsp;
+                                      </div>
+                                  </div>
 
 
-                          <button  style="  border-color: #95C623; background-color: #95C623"class="btn btn-primary"  type="submit" name="button">Search</button>
-                          </form>
-                        </div>
+                                <button  style="  border-color: #95C623; background-color: #95C623"class="btn btn-primary"  type="submit" name="button">Search</button>
+                                </form>
+                              </div>
 
-                        <div class="success-message">
-                            <p>{{session('thanks')}}</p>
 
-                        </div>
 
+                          </div>
+                      </div>
+                      <!-- <a href="/mechanic/profile/{$id}">View Profile</a> -->
                     </div>
                 </div>
-                <!-- <a href="/mechanic/profile/{$id}">View Profile</a> -->
-              </div>
-          </div>
-      </div>
-  </div>
-                                  
+            </div>
+
+        </div>
+
+        <script>
+        var hasMsg = "{{Session::has('thanks')}}";
+        var sessionMsg = "{{Session::get('thanks')}}";
+        if (hasMsg) {
+          alert(sessionMsg);
+        }
+
+
+         $(function () {
+           //jQuery code
+           var nairobi = ["Madaraka", "Nairobi West", "Kibera", "Westlands"];
+           var kisumu = ["Bondo", "Nyakach", "Nyando", "Kisumu West"];
+           var mombasa = ["Nyali", "Ukunda", "Bamburi", "Mtwapa"];
+
+           $(".county").on("change", function () {
+             var selectedCounty = $(".county").val();
+
+             $(".town").css({"display": "block"});
+
+             switch (selectedCounty) {
+               case "nairobi":
+                $(".town").empty();
+                $('.town').append(`<option value="">Choose your area</option>`);
+                 for (var town of nairobi) {
+
+                   $('.town').append(`<option value="${town.toLowerCase
+                   ().replace(/\s/g, '')}">${town}</option>`);
+                 }
+
+                 break;
+               case "kisumu":
+                 $(".town").empty();
+                 $('.town').append(`<option value="">Choose your area</option>`);
+                 for (var town of kisumu) {
+
+                   $('.town').append(`<option value="${town.toLowerCase
+                   ()}">
+                                         ${town}
+                                    </option>`);
+                 }
+                 break;
+               case "mombasa":
+                   $(".town").empty();
+                   $('.town').append(`<option value="">Choose your area</option>`);
+                 for (var town of mombasa) {
+                   $('.town').append(`<option value="${town.toLowerCase
+                   ()}">
+                                         ${town}
+                                    </option>`);
+                 }
+
+                 break;
+               default:
+
+             }
+
+         }
+         );
+
+         });
+       </script>
+
+
 
   @endsection('content')

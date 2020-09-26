@@ -65,6 +65,7 @@
                           Login to send request
 
                         </button>
+                        @endauth
                     </div>
                 </div>
 
@@ -74,12 +75,5 @@
             </div>
         </div>
     </div>
-</div>
-
-
-<div class="card-body">
-
-
-</div>
 
 @endsection

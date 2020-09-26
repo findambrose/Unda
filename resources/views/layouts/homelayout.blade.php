@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!-- Welcome/full page layout -->
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="utf-8">
@@ -8,7 +9,9 @@
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
 
+        </script>
         <!-- Styles -->
         <link rel="stylesheet" href="/css/app.css">
     </head>
@@ -41,9 +44,6 @@ margin-top: -10px;">
       <main class="">
         @yield('content')
       </main>
-
-
-
 
     </body>
 

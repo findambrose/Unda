@@ -10,7 +10,7 @@
 
                   <div class="card-body">
 
-                    <?php if (!empty($history)): ?>
+                    <?php if (!empty($history[0])): ?>
                       @foreach($history as $record)
                           <div class="">
                           Repair Number:  {{$record->id}}

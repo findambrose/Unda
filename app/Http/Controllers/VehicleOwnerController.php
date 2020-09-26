@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Http\Request;
 use App\User;
@@ -8,8 +9,14 @@ use App\Repair;
 
 class VehicleOwnerController extends Controller
 {
+
+  //  Constructor to initialise auth middleware in class
+    // public function __construct(){
+    //   $this->middleware('auth');
+    // }
     //
-    function getVehicleOwnerProfile($id){
+    function getVehicleOwnerProfile(){
+      $id = Auth::user()->id;
       $voprofile = User::findOrFail($id);
 
       return view('vehicle_owner/vehicleownerprofile', ['voprofile' => $voprofile]);
@@ -25,8 +32,8 @@ class VehicleOwnerController extends Controller
 
 
 
-      $location = $_GET['location'];
-      $searchResults = User::where('location', $location) ->where('role', 'mechanic')->get();
+
+      $searchResults = User::where('county', request('county'))->where('town', request('town'))->where('role', 'mechanic')->get();
       return view('vehicle_owner/search_results', ['searchResults' => $searchResults]);
 
 
@@ -36,23 +43,31 @@ class VehicleOwnerController extends Controller
   public function requestMechanic($id)
     {
       // code...
+      $userRole = Auth::user()->role;
+      if ($userRole == "mechanic") {
+        // code...
+        return redirect()->route('mechDashboard')->with('rejectMsg', 'Mechanic accounts are not allowed to place repair requests. Please create a vehicle owner account to get started.');
+
+      }
+      else{
       return view('vehicle_owner/requestpage', ['mechId' => $id]);
 
-
+     }
     }
 
-    function getUserHistory($id)
+    function getUserHistory()
     {
       // Get repair History
+    $id = Auth::user()->id;
     $history = Repair::where('vehicle_owner_id', $id) ->where('completion_status', 'complete')->get();
 
-
-      return view('vehicle_owner/user-repair-history', ['history' => $history]);
+    return view('vehicle_owner/user-repair-history', ['history' => $history]);
     }
 
-    function getUserActiveRepairs($id)
+    function getUserActiveRepairs()
     {
       // Get user active repairs
+    $id = auth()->user()->id;
     $history = Repair::where('vehicle_owner_id', $id) ->where('acceptance_status', 'accepted') ->where('completion_status', 'ongoing')->get();
 
 
@@ -66,9 +81,10 @@ class VehicleOwnerController extends Controller
       return view('vehicle_owner/user-dashboard', ['id' =>$id]);
     }
 
-    function getuserPendingRepairs($id)
+    function getuserPendingRepairs()
     {
       // code...
+      $id = auth()->user()->id;
       $pending = Repair::where('vehicle_owner_id', $id) ->where('acceptance_status', 'pending')->get();
       return view('vehicle_owner/user-pending-requests', ['pending' => $pending]);
     }

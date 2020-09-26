@@ -8,7 +8,7 @@
   </div>
 
   <div class="card-body">
-    @if(!empty($searchResults))
+    @if(!empty($searchResults[0]))
 
         @foreach($searchResults as $searchResult)
 

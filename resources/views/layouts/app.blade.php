@@ -1,4 +1,7 @@
+
 <!doctype html>
+
+<!-- Mechanics pages layout -->
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="utf-8">
@@ -11,10 +14,12 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -30,11 +35,29 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <div  class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto">
+                    @auth
+                    <ul style="font-size: 18px; margin-left: 131px" class="navbar-nav mr-auto">
+                        <li style="margin-right: 5px;"> <a href="{{route('userDashboard')}}">Dashboard</a> </li>
+                        <li style="margin-right: 5px;">|</li>
+                        <li> <a style="margin-right: 5px;" href="{{url('/')}}">Home</a> </li>
+                        <li style="margin-right: 5px;">|</li>
+                        <li> <a style="margin-right: 5px;" href="#">Repairs</a> </li>
+                        <li style="margin-right: 5px;">|</li>
+
+                        <li> <a href="#">Contact us</a> </li>
+
 
                     </ul>
+
+                    <ul style="margin-left: 15px" class="navbar-nav mr-auto">
+                      <li  style="margin-right: 30px"> <a  style="font-size: 16px" href="#"><i class="fa fa-envelope"></i> <span style="color: orange; position: absolute; margin-left: 2px; margin-top: -6px;">5</span> </a></li>
+                      <li> <a style="font-size: 16px" href="#"> <i class="fa fa-bell"></i> <span style="color: orange; position: absolute; margin-left: 2px; margin-top: -6px;">3</span> </a> </li>
+                    </ul>
+                    @endauth
+
+
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
@@ -48,16 +71,21 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="#">Profile</a>
+                                    <a class="dropdown-item" href="#">My Account</a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
 
+
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf
                                     </form>
                                 </div>
+
+
                             </li>
                         @endguest
                     </ul>
@@ -71,6 +99,7 @@
     </div>
 </body>
 <footer class="all-footer">
+
 <p class="footer-text">Copyright © 2020. All Rights Reserved.</p>
 </footer>
 </html>

@@ -22,5 +22,13 @@
           </div>
       </div>
 </div>
+<script type="text/javascript">
+  var hasMsg = "{{Session::has('rejectMsg')}}";
+  var msg = "{{Session::get('rejectMsg')}}";
+
+  if (hasMsg) {
+    alert(msg);
+  }
+</script>
 
 @endsection
