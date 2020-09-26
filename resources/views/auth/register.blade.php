@@ -25,30 +25,26 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="location" class="col-md-4 col-form-label text-md-right">{{ __('Location') }}</label>
+                            <label  class="col-md-4 col-form-label text-md-right" for="location">Location</label>
+                            <div class="col-md-3">
 
-                            <div class="col-md-6">
-
-                              <select class="form-control @error('location') is-invalid @enderror" name="location" value= "{{old('location')}}" required autocomplete>
-
+                              <select class="county" name="county">
+                                <option value="select-area">Choose your area</option>
                                 <option value="nairobi">Nairobi</option>
                                 <option value="mombasa">Mombasa</option>
                                 <option value="kisumu">Kisumu</option>
-                                <option value="nakuru">Nakuru</option>
-                                <option value="eldoret">Eldoret</option>
-                                <option value="kitui">Kitui</option>
-                                <option value="malindi">Malindi</option>
-                                <option value="kisii">Kisii</option>
-                                <option value="embu">Embu</option>
-
                               </select>
 
+                            </div>
 
-                                @error('location')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                            <div class="col-md-2">
+
+                            <select style="display: none" class="town" name="town">
+                            <option disabled value="select-area">Choose your area</option>
+
+
+                          </select>
+
                             </div>
                         </div>
 
@@ -135,6 +131,8 @@
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Register') }}
                                 </button>
+
+                                <p>Already a member? <a href="{{url('/login')}}">Login</a> </p> 
                             </div>
                         </div>
                     </form>
@@ -143,4 +141,60 @@
         </div>
     </div>
 </div>
+<script>
+
+
+ $(function () {
+   //jQuery code
+   var nairobi = ["Madaraka", "Nairobi West", "Kibera", "Westlands"];
+   var kisumu = ["Bondo", "Nyakach", "Nyando", "Kisumu West"];
+   var mombasa = ["Nyali", "Ukunda", "Bamburi", "Mtwapa"];
+
+   $(".county").on("change", function () {
+     var selectedCounty = $(".county").val();
+
+     $(".town").css({"display": "block"});
+
+     switch (selectedCounty) {
+       case "nairobi":
+        $(".town").empty();
+        $('.town').append(`<option value="">Choose your area</option>`);
+         for (var town of nairobi) {
+
+           $('.town').append(`<option value="${town.toLowerCase
+           ().replace(/\s/g, '')}">${town}</option>`);
+         }
+
+         break;
+       case "kisumu":
+         $(".town").empty();
+         $('.town').append(`<option value="">Choose your area</option>`);
+         for (var town of kisumu) {
+
+           $('.town').append(`<option value="${town.toLowerCase
+           ()}">
+                                 ${town}
+                            </option>`);
+         }
+         break;
+       case "mombasa":
+           $(".town").empty();
+           $('.town').append(`<option value="">Choose your area</option>`);
+         for (var town of mombasa) {
+           $('.town').append(`<option value="${town.toLowerCase
+           ()}">
+                                 ${town}
+                            </option>`);
+         }
+
+         break;
+       default:
+
+     }
+
+ }
+ );
+
+ });
+</script>
 @endsection

@@ -69,11 +69,14 @@ body {
   font-family: "Nunito", sans-serif;
   font-size: 0.9rem;
   font-weight: 400;
+  padding-bottom: 80px;
+
   line-height: 1.6;
   color: #212529;
   text-align: left;
   background-color: #f8fafc;
 }
+
 
 [tabindex="-1"]:focus:not(:focus-visible) {
   outline: 0 !important;
@@ -10996,6 +10999,7 @@ html, body {
 .home-footer{
   padding-top: 35px;
   padding-bottom: 20px;
+  position: relative;
   background-color: #E55812;
   color: white;
   text-align: center;
@@ -11010,13 +11014,18 @@ html, body {
   padding-bottom: 20px;
   background-color: #E55812;
   color: white;
+  height: 80px;
   text-align: center;
   position: absolute;
+  margin-top: 20px;
   bottom: 0;
+
   width: 100%;
 
-
 }
+
+
+
 
 .how-it-works{
   text-align: center;

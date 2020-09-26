@@ -1,4 +1,7 @@
 <!doctype html>
+
+<!-- Mechanics pages layout -->
+
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="utf-8">
@@ -32,9 +35,12 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto">
 
-                    </ul>
+                      <ul style="font-size: 18px; margin-left: 131px" class="navbar-nav mr-auto">
+                          <li style="margin-right: 5px;"> <a href="{{route('userDashboard')}}">Dashboard</a> </li>
+
+                      </ul>
+
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">

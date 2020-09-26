@@ -4,7 +4,6 @@
             <h1 class="how-it-works-text">How It Works</h1>
             <img style="width: 95%" src="/imgs/how-it-works.jpg" alt="">
         </div>
-
         <div style="background-color: #57B8FF" class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
@@ -21,22 +20,26 @@
 
                                   <div class="form-group row">
                                       <label style="font-size: 20px; margin-left: 15px; font-weight: bold" for="location">Choose location: &nbsp;</label>
-                                      <div class="col-md-10">
+                                      <div class="col-md-5">
 
-                                        <select class="" name="location">
+                                        <select class="county" name="county">
                                           <option value="select-area">Choose your area</option>
                                           <option value="nairobi">Nairobi</option>
                                           <option value="mombasa">Mombasa</option>
                                           <option value="kisumu">Kisumu</option>
-                                          <option value="nakuru">Nakuru</option>
-                                          <option value="eldoret">Eldoret</option>
-                                          <option value="kitui">Kitui</option>
-                                          <option value="malindi">Malindi</option>
-                                          <option value="kisii">Kisii</option>
-                                          <option value="embu">Embu</option>
                                         </select>
                                           &nbsp;&nbsp;
-                                  </div>
+                                      </div>
+
+                                      <div class="col-md-2">
+
+                                      <select style="display: none" class="town" name="town">
+                                      <option disabled value="select-area">Choose your area</option>
+
+
+                                    </select>
+                                      &nbsp;&nbsp;
+                                      </div>
                                   </div>
 
 
@@ -44,10 +47,7 @@
                                 </form>
                               </div>
 
-                              <div class="success-message">
-                                  <p>{{session('thanks')}}</p>
 
-                              </div>
 
                           </div>
                       </div>
@@ -55,7 +55,70 @@
                     </div>
                 </div>
             </div>
+
         </div>
+
+        <script>
+        var hasMsg = "{{Session::has('thanks')}}";
+        var sessionMsg = "{{Session::get('thanks')}}";
+        if (hasMsg) {
+          alert(sessionMsg);
+        }
+
+
+         $(function () {
+           //jQuery code
+           var nairobi = ["Madaraka", "Nairobi West", "Kibera", "Westlands"];
+           var kisumu = ["Bondo", "Nyakach", "Nyando", "Kisumu West"];
+           var mombasa = ["Nyali", "Ukunda", "Bamburi", "Mtwapa"];
+
+           $(".county").on("change", function () {
+             var selectedCounty = $(".county").val();
+
+             $(".town").css({"display": "block"});
+
+             switch (selectedCounty) {
+               case "nairobi":
+                $(".town").empty();
+                $('.town').append(`<option value="">Choose your area</option>`);
+                 for (var town of nairobi) {
+
+                   $('.town').append(`<option value="${town.toLowerCase
+                   ().replace(/\s/g, '')}">${town}</option>`);
+                 }
+
+                 break;
+               case "kisumu":
+                 $(".town").empty();
+                 $('.town').append(`<option value="">Choose your area</option>`);
+                 for (var town of kisumu) {
+
+                   $('.town').append(`<option value="${town.toLowerCase
+                   ()}">
+                                         ${town}
+                                    </option>`);
+                 }
+                 break;
+               case "mombasa":
+                   $(".town").empty();
+                   $('.town').append(`<option value="">Choose your area</option>`);
+                 for (var town of mombasa) {
+                   $('.town').append(`<option value="${town.toLowerCase
+                   ()}">
+                                         ${town}
+                                    </option>`);
+                 }
+
+                 break;
+               default:
+
+             }
+
+         }
+         );
+
+         });
+       </script>
 
 
   @endsection('content')

@@ -9,7 +9,7 @@
                   <div class="card-header">Repair History</div>
 
                   <div class="card-body">
-                    <?php if (!is_null($history)): ?>
+                    <?php if (!empty($history[0])): ?>
 
                       @foreach($history as $record)
                           <div class="">
