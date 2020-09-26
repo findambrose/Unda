@@ -43,8 +43,18 @@ class VehicleOwnerController extends Controller
   public function requestMechanic($id)
     {
       // code...
+      $userRole = Auth::user()->role;
+      if ($userRole == "mechanic") {
+        // code...
+        return redirect()->route('mechDashboard')->with('rejectMsg', 'Mechanic accounts are not allowed to place repair requests. Please create a vehicle owner account to get started.');
+
+      }
+      else{
       return view('vehicle_owner/requestpage', ['mechId' => $id]);
+
+     }
     }
+
     function getUserHistory()
     {
       // Get repair History

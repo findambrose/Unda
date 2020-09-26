@@ -19,6 +19,7 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -40,16 +41,21 @@
                     <ul style="font-size: 18px; margin-left: 131px" class="navbar-nav mr-auto">
                         <li style="margin-right: 5px;"> <a href="{{route('userDashboard')}}">Dashboard</a> </li>
                         <li style="margin-right: 5px;">|</li>
-                        <li> <a href="{{url('/')}}">Home</a> </li>
+                        <li> <a style="margin-right: 5px;" href="{{url('/')}}">Home</a> </li>
                         <li style="margin-right: 5px;">|</li>
+                        <li> <a style="margin-right: 5px;" href="#">Repairs</a> </li>
+                        <li style="margin-right: 5px;">|</li>
+                        <li> <a href="#" style="margin-right: 5px;">Transactions</a> </li>
+                        <li style="margin-right: 5px;">|</li>
+
                         <li> <a href="#">Contact us</a> </li>
 
 
                     </ul>
 
                     <ul style="margin-left: 15px" class="navbar-nav mr-auto">
-                      <li  style="margin-right: 15px"> <a href="#"><img src="img/messages.png" alt="messages"> </a></li>
-                      <li> <a href="#"><img src="img/notif.png" alt="notifications"> </a> </li>
+                      <li  style="margin-right: 30px"> <a  style="font-size: 16px" href="#"><i class="fa fa-envelope"></i> <span style="color: orange; position: absolute; margin-left: 2px; margin-top: -6px;">5</span> </a></li>
+                      <li> <a style="font-size: 16px" href="#"> <i class="fa fa-bell"></i> <span style="color: orange; position: absolute; margin-left: 2px; margin-top: -6px;">3</span> </a> </li>
                     </ul>
                     @endauth
 
